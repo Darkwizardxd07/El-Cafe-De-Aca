@@ -89,6 +89,7 @@ h1, h2, h3, p { margin: 0; overflow-wrap: break-word; word-wrap: break-word; }
   width: min(38vmin, 320px);
   height: min(38vmin, 320px);
   transition: transform 0.8s ease, opacity 0.8s ease;
+  will-change: transform, opacity;
 }
 .vine path {
   fill: none;
@@ -111,6 +112,12 @@ h1, h2, h3, p { margin: 0; overflow-wrap: break-word; word-wrap: break-word; }
 .vine-lm { left: -1.5vmin; top: 50%; transform: translateY(-50%); }
 .vine-rm { right: -1.5vmin; top: 50%; transform: translateY(-50%); }
 
+.vine-q1, .vine-q2, .vine-q3, .vine-q4 { width: min(22vmin, 170px); height: min(22vmin, 170px); }
+.vine-q1 { top: 14%; left: -1vmin; }
+.vine-q2 { top: 14%; right: -1vmin; }
+.vine-q3 { bottom: 14%; left: -1vmin; }
+.vine-q4 { bottom: 14%; right: -1vmin; }
+
 .intro.is-closing .vine-tl { transform: translate(-25%, -25%) rotate(-8deg); }
 .intro.is-closing .vine-tr { transform: translate(25%, -25%) rotate(8deg); }
 .intro.is-closing .vine-bl { transform: translate(-25%, 25%) rotate(8deg); }
@@ -119,6 +126,10 @@ h1, h2, h3, p { margin: 0; overflow-wrap: break-word; word-wrap: break-word; }
 .intro.is-closing .vine-bm { transform: translate(-50%, 60%) rotate(6deg); }
 .intro.is-closing .vine-lm { transform: translate(-60%, -50%) rotate(6deg); }
 .intro.is-closing .vine-rm { transform: translate(60%, -50%) rotate(-6deg); }
+.intro.is-closing .vine-q1 { transform: translate(-30%, -20%) rotate(-8deg); }
+.intro.is-closing .vine-q2 { transform: translate(30%, -20%) rotate(8deg); }
+.intro.is-closing .vine-q3 { transform: translate(-30%, 20%) rotate(8deg); }
+.intro.is-closing .vine-q4 { transform: translate(30%, 20%) rotate(-8deg); }
 
 @keyframes grow-vine { to { stroke-dashoffset: 0; } }
 
@@ -127,6 +138,7 @@ h1, h2, h3, p { margin: 0; overflow-wrap: break-word; word-wrap: break-word; }
   font-size: clamp(1.2rem, 3.5vmin, 2.2rem);
   opacity: 0;
   animation: leaf-pop 0.6s ease forwards;
+  will-change: transform, opacity;
 }
 .leaf-1 { top: 58%; left: 16%; animation-delay: .3s; }
 .leaf-2 { top: 32%; left: 40%; animation-delay: .8s; font-size: clamp(1rem, 2.6vmin, 1.6rem); }
@@ -152,6 +164,18 @@ h1, h2, h3, p { margin: 0; overflow-wrap: break-word; word-wrap: break-word; }
 .leaf-22{ top: 14%; right: 32%; animation-delay: 2.3s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
 .leaf-23{ bottom: 14%; left: 34%; animation-delay: 2.4s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
 .leaf-24{ bottom: 14%; right: 34%; animation-delay: 2.5s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
+.leaf-25{ top: 26%; left: 14%; animation-delay: 2.6s; font-size: clamp(0.9rem, 2.2vmin, 1.4rem); }
+.leaf-26{ top: 26%; right: 14%; animation-delay: 2.7s; font-size: clamp(0.9rem, 2.2vmin, 1.4rem); }
+.leaf-27{ top: 2%; left: 26%; animation-delay: 2.8s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
+.leaf-28{ top: 2%; right: 26%; animation-delay: 2.9s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
+.leaf-29{ bottom: 26%; left: 12%; animation-delay: 3.0s; font-size: clamp(0.9rem, 2.2vmin, 1.4rem); }
+.leaf-30{ bottom: 26%; right: 12%; animation-delay: 3.1s; font-size: clamp(0.9rem, 2.2vmin, 1.4rem); }
+.leaf-31{ bottom: 2%; left: 30%; animation-delay: 3.2s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
+.leaf-32{ bottom: 2%; right: 30%; animation-delay: 3.3s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
+.leaf-33{ top: 66%; left: 8%; animation-delay: 3.4s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
+.leaf-34{ top: 66%; right: 8%; animation-delay: 3.5s; font-size: clamp(0.85rem, 2vmin, 1.3rem); }
+.leaf-35{ top: 2%; left: 2%; animation-delay: 3.6s; font-size: clamp(0.8rem, 1.8vmin, 1.2rem); }
+.leaf-36{ top: 2%; right: 2%; animation-delay: 3.7s; font-size: clamp(0.8rem, 1.8vmin, 1.2rem); }
 
 @keyframes leaf-pop {
   from { opacity: 0; transform: scale(.3) rotate(-16deg); }
@@ -163,10 +187,28 @@ h1, h2, h3, p { margin: 0; overflow-wrap: break-word; word-wrap: break-word; }
   z-index: 2;
   text-align: center;
   max-width: 90vw;
+  padding: 6% 8%;
   animation: fade-up 0.9s ease both;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .intro.is-closing .intro-content { opacity: 0; transform: translateY(-24px); }
+
+/* Halo suave detrás del texto: sin importar cuántas plantas/flores haya
+   en la animación de fondo, esta zona nunca deja que se vean "tapando"
+   el logo, el título o la frase — actúa como un viñeteado de luz. */
+.intro-content::before {
+  content: "";
+  position: absolute;
+  inset: -4% -6%;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(248, 239, 221, 0.97) 0%,
+    rgba(248, 239, 221, 0.9) 45%,
+    rgba(248, 239, 221, 0.55) 68%,
+    rgba(248, 239, 221, 0) 85%
+  );
+}
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(20px); }

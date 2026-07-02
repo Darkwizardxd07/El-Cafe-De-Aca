@@ -7,10 +7,21 @@
 <meta name="description" content="El Café de Acá — Carta digital interactiva, trilingüe, inspirada en el Paraguay que nos gusta.">
 <title>El Café de Acá — Carta Digital</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Anton&family=Permanent+Marker&family=Kaushan+Script&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<!-- Fuentes auto-hospedadas (sin depender de fonts.googleapis.com): elimina
+     el round-trip a un tercero y evita el parpadeo tardío de texto (FOUT). -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/anton-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/permanent-marker-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/kaushan-script-400-normal.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/playfair-display-700-italic.woff2" crossorigin>
+<link rel="preload" as="image" href="assets/logo-emblem.webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="css/style.css">
+
+<!-- defer: el navegador puede descargarlos ya durante el parseo del HTML,
+     pero se ejecutan en orden recién cuando el DOM está listo. -->
+<script defer src="js/i18n.js"></script>
+<script defer src="js/menu-data.js"></script>
+<script defer src="js/app.js"></script>
 </head>
 <body>
 
@@ -26,6 +37,10 @@
     <div class="vine vine-bm"><svg viewBox="0 0 120 160"><path d="M60,156 C40,135 75,115 55,92 C38,72 68,60 52,36" /></svg></div>
     <div class="vine vine-lm"><svg viewBox="0 0 160 120"><path d="M4,60 C25,40 45,75 68,55 C88,38 100,68 124,52" /></svg></div>
     <div class="vine vine-rm"><svg viewBox="0 0 160 120"><path d="M156,60 C135,40 115,75 92,55 C72,38 60,68 36,52" /></svg></div>
+    <div class="vine vine-q1"><svg viewBox="0 0 140 140"><path d="M6,134 C30,110 20,80 45,60 C65,44 55,20 78,6" /></svg></div>
+    <div class="vine vine-q2"><svg viewBox="0 0 140 140"><path d="M134,134 C110,110 120,80 95,60 C75,44 85,20 62,6" /></svg></div>
+    <div class="vine vine-q3"><svg viewBox="0 0 140 140"><path d="M6,6 C30,30 20,60 45,80 C65,96 55,120 78,134" /></svg></div>
+    <div class="vine vine-q4"><svg viewBox="0 0 140 140"><path d="M134,6 C110,30 120,60 95,80 C75,96 85,120 62,134" /></svg></div>
 
     <span class="leaf leaf-1">🌿</span><span class="leaf leaf-2">🍃</span><span class="leaf leaf-3">🌸</span>
     <span class="leaf leaf-4">🌿</span><span class="leaf leaf-5">🍃</span><span class="leaf leaf-6">🌸</span>
@@ -38,10 +53,19 @@
     <span class="leaf leaf-19">🌺</span><span class="leaf leaf-20">🍃</span>
     <span class="leaf leaf-21">🌼</span><span class="leaf leaf-22">🌸</span>
     <span class="leaf leaf-23">🍀</span><span class="leaf leaf-24">🌿</span>
+    <span class="leaf leaf-25">🌷</span><span class="leaf leaf-26">🌻</span>
+    <span class="leaf leaf-27">🍃</span><span class="leaf leaf-28">🌸</span>
+    <span class="leaf leaf-29">🌿</span><span class="leaf leaf-30">🌼</span>
+    <span class="leaf leaf-31">🌺</span><span class="leaf leaf-32">🍀</span>
+    <span class="leaf leaf-33">🌷</span><span class="leaf leaf-34">🍃</span>
+    <span class="leaf leaf-35">🌻</span><span class="leaf leaf-36">🌸</span>
   </div>
 
   <div class="intro-content">
-    <img class="emblem emblem-lg" src="assets/logo-emblem.png" alt="" aria-hidden="true" width="480" height="480">
+    <picture>
+      <source srcset="assets/logo-emblem.webp" type="image/webp">
+      <img class="emblem emblem-lg" src="assets/logo-emblem.png" alt="" aria-hidden="true" width="480" height="480" fetchpriority="high">
+    </picture>
     <p class="intro-kicker">MBA'E TEKO?</p>
     <h1 class="wordmark">
       <span class="wordmark-el">El</span> <span class="wordmark-cafe">Café</span>
@@ -59,7 +83,10 @@
 <header id="site-nav" class="site-nav" hidden>
   <div class="site-nav-top">
     <a href="#top" class="nav-brand">
-      <img class="emblem emblem-sm" src="assets/logo-emblem-sm.png" alt="" aria-hidden="true" width="128" height="128">
+      <picture>
+        <source srcset="assets/logo-emblem-sm.webp" type="image/webp">
+        <img class="emblem emblem-sm" src="assets/logo-emblem-sm.png" alt="" aria-hidden="true" width="128" height="128">
+      </picture>
       <span class="nav-brand-text">El Café de Acá</span>
     </a>
     <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Idioma">
@@ -96,7 +123,10 @@
     <p class="closing-line3">Paraguay</p>
     <p class="closing-line4">QUE NOS</p>
     <p class="closing-line5">GUSTA</p>
-    <img class="emblem emblem-sm closing-emblem" src="assets/logo-emblem-sm.png" alt="" width="128" height="128">
+    <picture>
+      <source srcset="assets/logo-emblem-sm.webp" type="image/webp">
+      <img class="emblem emblem-sm closing-emblem" src="assets/logo-emblem-sm.png" alt="" width="128" height="128" loading="lazy">
+    </picture>
   </section>
 
   <!-- ======================= FOOTER ======================= -->
@@ -104,7 +134,10 @@
     <div class="footer-inner">
 
       <div class="footer-col footer-brand">
-        <img class="emblem emblem-sm" src="assets/logo-emblem-sm.png" alt="Escudo de El Café de Acá" width="128" height="128">
+        <picture>
+          <source srcset="assets/logo-emblem-sm.webp" type="image/webp">
+          <img class="emblem emblem-sm" src="assets/logo-emblem-sm.png" alt="Escudo de El Café de Acá" width="128" height="128" loading="lazy">
+        </picture>
         <p class="footer-tagline" data-i18n="footerTagline">Inspirado en el Paraguay que nos gusta.</p>
       </div>
 
@@ -130,7 +163,10 @@
 
       <div class="footer-col footer-qr">
         <h3 data-i18n="qrTitle">Compartí la carta</h3>
-        <img src="assets/qr-menu.png" alt="Código QR con el enlace a la carta digital" width="120" height="120" loading="lazy">
+        <picture>
+          <source srcset="assets/qr-menu.webp" type="image/webp">
+          <img src="assets/qr-menu.png" alt="Código QR con el enlace a la carta digital" width="120" height="120" loading="lazy">
+        </picture>
         <p class="footer-qr-caption" data-i18n="qrCaption">Escaneá para abrir el menú</p>
       </div>
 
@@ -165,8 +201,5 @@
 <!-- ======================= BOTÓN VOLVER ARRIBA ======================= -->
 <button id="back-to-top" class="back-to-top" type="button" hidden aria-label="Volver arriba">↑</button>
 
-<script src="js/i18n.js"></script>
-<script src="js/menu-data.js"></script>
-<script src="js/app.js"></script>
 </body>
 </html>

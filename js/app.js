@@ -408,6 +408,7 @@
       b.classList.toggle("active", b.dataset.lang === lang);
     });
     applyStaticI18n();
+    menuContentBuilt = true;
     renderMenu();
     renderCatNav();
     renderBranches();
@@ -424,9 +425,28 @@
   }
 
   // -------------------------------------------------------------------
+  // Construcción del contenido pesado (176 ítems + carruseles), diferida
+  // fuera de la ruta crítica inicial para que la intro pinte e interactúe
+  // rápido. Se dispara en tiempo ocioso y, como red de seguridad, también
+  // justo antes de revelar la carta por si el usuario hace clic muy rápido.
+  // -------------------------------------------------------------------
+  let menuContentBuilt = false;
+  function buildMenuContent() {
+    if (menuContentBuilt) return;
+    menuContentBuilt = true;
+    renderMenu();
+    renderCatNav();
+    renderBranches();
+    renderCarousels();
+    wireFooterLinks();
+  }
+
+  // -------------------------------------------------------------------
   // Intro → revelar carta
   // -------------------------------------------------------------------
   function revealMenu() {
+    buildMenuContent();
+
     const intro = document.getElementById("intro");
     const nav = document.getElementById("site-nav");
     const main = document.getElementById("menu-main");
@@ -462,15 +482,16 @@
     applyStaticI18n();
     document.querySelector('.lang-btn[data-lang="' + DEFAULT_LANG + '"]').classList.add("active");
 
-    renderMenu();
-    renderCatNav();
-    renderBranches();
-    renderCarousels();
-    wireFooterLinks();
     setupModal();
     setupLanguageSwitcher();
     setupBackToTop();
-
     document.getElementById("btn-ver-menu").addEventListener("click", revealMenu);
+
+    // Construir los 176 ítems del menú + carruseles no es necesario para
+    // pintar/interactuar con la intro, así que se hace en tiempo ocioso
+    // (con red de seguridad dentro de revealMenu si el usuario es más
+    // rápido que el idle callback).
+    const idle = window.requestIdleCallback || function (cb) { setTimeout(cb, 200); };
+    idle(buildMenuContent, { timeout: 1500 });
   });
 })();
