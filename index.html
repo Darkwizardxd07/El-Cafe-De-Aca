@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F8EFDD">
+<meta name="description" content="El Café de Acá — Carta digital interactiva, trilingüe, inspirada en el Paraguay que nos gusta.">
+<title>El Café de Acá — Carta Digital</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Anton&family=Permanent+Marker&family=Kaushan+Script&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ======================= INTRO / BIENVENIDA ======================= -->
+<section id="intro" class="intro" aria-label="Pantalla de bienvenida">
+  <div class="intro-bg"></div>
+  <div class="intro-plants" aria-hidden="true">
+    <div class="vine vine-tl"><svg viewBox="0 0 220 220"><path d="M8,210 C45,150 15,110 65,80 C115,50 90,15 145,8" /></svg></div>
+    <div class="vine vine-tr"><svg viewBox="0 0 220 220"><path d="M212,210 C175,150 205,110 155,80 C105,50 130,15 75,8" /></svg></div>
+    <div class="vine vine-bl"><svg viewBox="0 0 220 220"><path d="M8,8 C45,70 15,110 65,140 C115,170 90,205 145,212" /></svg></div>
+    <div class="vine vine-br"><svg viewBox="0 0 220 220"><path d="M212,8 C175,70 205,110 155,140 C105,170 130,205 75,212" /></svg></div>
+    <span class="leaf leaf-1">🌿</span><span class="leaf leaf-2">🍃</span><span class="leaf leaf-3">🌸</span>
+    <span class="leaf leaf-4">🌿</span><span class="leaf leaf-5">🍃</span><span class="leaf leaf-6">🌸</span>
+    <span class="leaf leaf-7">🍃</span><span class="leaf leaf-8">🌿</span>
+    <span class="leaf leaf-9">🍃</span><span class="leaf leaf-10">🌿</span>
+  </div>
+
+  <div class="intro-content">
+    <div class="emblem emblem-lg" id="emblem-intro" aria-hidden="true"></div>
+    <p class="intro-kicker">MBA'E TEKO?</p>
+    <h1 class="wordmark">
+      <span class="wordmark-el">El</span> <span class="wordmark-cafe">Café</span>
+      <span class="wordmark-flourish">✦</span>
+      <span class="wordmark-de">de</span> <span class="wordmark-aca">Acá</span>
+    </h1>
+    <p class="intro-tagline" data-i18n="heroTagline">Inspirado en el Paraguay que nos gusta.</p>
+    <button id="btn-ver-menu" class="btn-cta" type="button">
+      <span data-i18n="ctaSeeMenu">Ver Carta</span>
+    </button>
+  </div>
+</section>
+
+<!-- ======================= NAV STICKY ======================= -->
+<header id="site-nav" class="site-nav" hidden>
+  <div class="site-nav-top">
+    <a href="#top" class="nav-brand">
+      <span class="emblem emblem-sm" id="emblem-nav" aria-hidden="true"></span>
+      <span class="nav-brand-text">El Café de Acá</span>
+    </a>
+    <div class="lang-switcher" id="lang-switcher" role="group" aria-label="Idioma">
+      <button type="button" class="lang-btn" data-lang="es">ES</button>
+      <button type="button" class="lang-btn" data-lang="pt">PT</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+  </div>
+  <nav class="cat-nav" id="cat-nav" aria-label="Categorías del menú">
+    <!-- generado por app.js desde MENU_DATA -->
+  </nav>
+</header>
+
+<!-- ======================= CARTA ======================= -->
+<main id="menu-main" class="menu-main" hidden>
+  <div id="top"></div>
+
+  <section id="menu-sections" class="menu-sections">
+    <!-- generado por app.js desde MENU_DATA -->
+  </section>
+
+  <!-- ======================= GALERÍA / CARRUSELES ======================= -->
+  <section class="gallery" aria-label="Galería">
+    <h2 class="gallery-title" data-i18n="galleryTitle">Nuestro Ambiente</h2>
+    <div id="carousels" class="carousels">
+      <!-- generado por app.js desde CAROUSEL_DATA -->
+    </div>
+  </section>
+
+  <!-- ======================= CIERRE ======================= -->
+  <section class="closing" aria-hidden="true">
+    <p class="closing-line1">INSPIRADO</p>
+    <p class="closing-line2">EN EL</p>
+    <p class="closing-line3">Paraguay</p>
+    <p class="closing-line4">QUE NOS</p>
+    <p class="closing-line5">GUSTA</p>
+    <div class="emblem emblem-sm closing-emblem" id="emblem-closing"></div>
+  </section>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <div class="footer-col footer-brand">
+        <span class="emblem emblem-sm" id="emblem-footer"></span>
+        <p class="footer-tagline" data-i18n="footerTagline">Inspirado en el Paraguay que nos gusta.</p>
+      </div>
+
+      <div class="footer-col">
+        <h3 data-i18n="locationsTitle">Nuestras Sucursales</h3>
+        <ul id="branches-list" class="branches-list"><!-- generado por app.js --></ul>
+      </div>
+
+      <div class="footer-col">
+        <h3 data-i18n="followUsTitle">Seguinos</h3>
+        <div class="social-row">
+          <a id="instagram-link" href="#" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg>
+          </a>
+          <a id="facebook-link" href="#" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 3h-2.5A4.5 4.5 0 0 0 9 7.5V10H7v4h2v8h4v-8h2.5l.5-4H13V7.5c0-.6.4-1 1-1H16V3z"/></svg>
+          </a>
+        </div>
+        <a id="whatsapp-link" href="#" target="_blank" rel="noopener" class="whatsapp-btn">
+          <span class="whatsapp-icon">💬</span> <span data-i18n="whatsappCta">Escribinos por WhatsApp</span>
+        </a>
+      </div>
+
+    </div>
+    <p class="footer-bottom">
+      <span>&copy; <span id="year"></span> El Café de Acá.</span>
+      <span data-i18n="footerRights">Todos los derechos reservados.</span>
+    </p>
+  </footer>
+</main>
+
+<!-- ======================= MODAL DETALLE DE PLATO ======================= -->
+<div id="modal-overlay" class="modal-overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button type="button" class="modal-close" id="modal-close" aria-label="Cerrar">&times;</button>
+    <div class="modal-image-placeholder">
+      <span class="modal-image-icon">📷</span>
+      <span class="modal-image-text" data-i18n="modalImageSoon">Imagen próximamente</span>
+    </div>
+    <div class="modal-body">
+      <span id="modal-vegan-tag" class="modal-tag" hidden></span>
+      <span id="modal-featured-tag" class="modal-tag modal-tag-gold" hidden></span>
+      <h3 id="modal-title" class="modal-title"></h3>
+      <p id="modal-desc" class="modal-desc"></p>
+      <p class="modal-price">
+        <span id="modal-price"></span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= BOTÓN VOLVER ARRIBA ======================= -->
+<button id="back-to-top" class="back-to-top" type="button" hidden aria-label="Volver arriba">↑</button>
+
+<script src="js/i18n.js"></script>
+<script src="js/menu-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
