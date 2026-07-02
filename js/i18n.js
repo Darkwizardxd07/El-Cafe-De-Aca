@@ -20,6 +20,8 @@ const I18N = {
     locationsCta: "Ver en el mapa",
     followUsTitle: "Seguinos",
     whatsappCta: "Escribinos por WhatsApp",
+    qrTitle: "Compartí la carta",
+    qrCaption: "Escaneá para abrir el menú",
     footerTagline: "Inspirado en el Paraguay que nos gusta.",
     footerRights: "Todos los derechos reservados.",
     backToTop: "Volver arriba"
@@ -40,6 +42,8 @@ const I18N = {
     locationsCta: "Ver no mapa",
     followUsTitle: "Siga-nos",
     whatsappCta: "Fale conosco no WhatsApp",
+    qrTitle: "Compartilhe o cardápio",
+    qrCaption: "Escaneie para abrir o cardápio",
     footerTagline: "Inspirado no Paraguai que a gente ama.",
     footerRights: "Todos os direitos reservados.",
     backToTop: "Voltar ao topo"
@@ -60,6 +64,8 @@ const I18N = {
     locationsCta: "View on map",
     followUsTitle: "Follow Us",
     whatsappCta: "Message us on WhatsApp",
+    qrTitle: "Share the menu",
+    qrCaption: "Scan to open the menu",
     footerTagline: "Inspired by the Paraguay we love.",
     footerRights: "All rights reserved.",
     backToTop: "Back to top"
