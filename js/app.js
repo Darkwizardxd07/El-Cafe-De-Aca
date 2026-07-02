@@ -19,6 +19,13 @@
     if (!field) return "";
     return field[currentLang] || field[DEFAULT_LANG] || field.es || "";
   }
+  // El precio es un string simple cuando es solo el monto (universal en
+  // todos los idiomas), pero cuando incluye etiquetas de tamaño/variante
+  // (P/M/G, "Lomito/Pollo", "bocaditos"...) se guarda como {es,en,pt}
+  // porque esas palabras sí cambian de un idioma a otro.
+  function trPrice(item) {
+    return typeof item.price === "string" ? item.price : tr(item.price);
+  }
 
   // -------------------------------------------------------------------
   // Render de la carta a partir de MENU_DATA
@@ -38,7 +45,7 @@
 
     const price = document.createElement("span");
     price.className = "item-price";
-    price.textContent = item.price;
+    price.textContent = trPrice(item);
 
     row.appendChild(name);
     row.appendChild(price);
@@ -240,7 +247,7 @@
     document.getElementById("modal-title").textContent = tr(item.name);
     document.getElementById("modal-desc").textContent = item.desc ? tr(item.desc) : "";
     document.getElementById("modal-desc").hidden = !item.desc;
-    document.getElementById("modal-price").textContent = t("modalPriceLabel") + ": " + item.price;
+    document.getElementById("modal-price").textContent = t("modalPriceLabel") + ": " + trPrice(item);
 
     const veganTag = document.getElementById("modal-vegan-tag");
     veganTag.hidden = !item.vegan;
