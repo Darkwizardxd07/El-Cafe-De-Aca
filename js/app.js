@@ -21,45 +21,6 @@
   }
 
   // -------------------------------------------------------------------
-  // Emblema (escudo circular) — generado una sola vez, reusado por id
-  // -------------------------------------------------------------------
-  function emblemSVG() {
-    return `
-      <svg viewBox="0 0 200 200" role="img" aria-label="El Café de Acá">
-        <defs>
-          <path id="arcTop" d="M 22,102 A 78,78 0 0 1 178,102" />
-          <path id="arcBottom" d="M 176,120 A 78,78 0 0 1 24,120" />
-        </defs>
-        <circle cx="100" cy="100" r="94" fill="none" stroke="#1D3557" stroke-width="3"/>
-        <circle cx="100" cy="100" r="80" fill="none" stroke="#1D3557" stroke-width="1.5"/>
-
-        <text font-family="'Anton', sans-serif" font-size="15" letter-spacing="2" fill="#1D3557">
-          <textPath href="#arcTop" startOffset="50%" text-anchor="middle">EL CAFÉ DE ACÁ</textPath>
-        </text>
-        <text font-family="'Anton', sans-serif" font-size="14" letter-spacing="3" fill="#1D3557">
-          <textPath href="#arcBottom" startOffset="50%" text-anchor="middle">PARAGUAY</textPath>
-        </text>
-
-        <g fill="#4C7A3D">
-          <path d="M100,118 C88,124 78,136 76,150 C86,148 96,140 100,128 Z"/>
-          <path d="M100,118 C90,120 82,128 79,138 C87,138 95,132 100,124 Z"/>
-          <path d="M100,118 C112,124 122,136 124,150 C114,148 104,140 100,128 Z"/>
-          <path d="M100,118 C110,120 118,128 121,138 C113,138 105,132 100,124 Z"/>
-        </g>
-
-        <path d="M100,55 L104,66 L116,66 L106,73 L110,84 L100,77 L90,84 L94,73 L84,66 L96,66 Z" fill="#E4A93A"/>
-      </svg>
-    `;
-  }
-
-  function mountEmblems() {
-    ["emblem-intro", "emblem-nav", "emblem-footer", "emblem-closing"].forEach(function (id) {
-      const el = document.getElementById(id);
-      if (el) el.innerHTML = emblemSVG();
-    });
-  }
-
-  // -------------------------------------------------------------------
   // Render de la carta a partir de MENU_DATA
   // -------------------------------------------------------------------
   function renderItem(item) {
@@ -491,7 +452,6 @@
   // Init
   // -------------------------------------------------------------------
   document.addEventListener("DOMContentLoaded", function () {
-    mountEmblems();
     applyStaticI18n();
     document.querySelector('.lang-btn[data-lang="' + DEFAULT_LANG + '"]').classList.add("active");
 
